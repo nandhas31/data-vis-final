@@ -28,11 +28,150 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tableau-vis {
+  width: 80%;
+  height: 0;
+  padding-bottom: 50%;  /* Aspect ratio of 4:3 (adjust as needed) */
+  position: relative;
+}
+
+.tableau-container iframe {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* App Container */
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Header Styles */
+.App-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.App-header h1 {
+  font-size: 3rem;
+  color: "white";
+  margin-bottom: 10px;
+}
+
+.App-header h2 {
+  font-size: 1.5rem;
+  color: #2980b9;
+  margin-bottom: 20px;
+}
+
+.App-header p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.App-header h3 {
+  font-size: 1.25rem;
+  margin-top: 30px;
+  color: #34495e;
+}
+
+.authors {
+  color: #7f8c8d;
+}
+
+.subtitle {
+  color: "white";
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* Background Section */
+.background {
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  width: 98%;
+}
+
+.background h3 {
+  font-size: 1.6rem;
+}
+
+.background h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #2980b9;
+  text-align: left;
+}
+
+.background p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.background a {
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.background a:hover {
+  text-decoration: underline;
+}
+
+/* Visualization Section */
+.sankey, .india-batting {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .App-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .background {
+    padding: 15px;
+  }
+
+  .background h4 {
+    font-size: 1.3rem;
+  }
+
+  .background p, .background a {
+    font-size: 0.9rem;
   }
 }
+
