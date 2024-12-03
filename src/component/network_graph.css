@@ -1,0 +1,46 @@
+path.link {
+    fill: none;
+    stroke: #afa8a8;
+    stroke-width: 1.5px;
+  }
+  
+  path.selected {
+    fill: none;
+    stroke: #ac1a1a;
+    stroke-width: 2px;
+  }
+  
+  .label {
+      fill: black; /* Font color */
+      font-size: 14px; /* Font size */
+      font-family: 'Arial', sans-serif; /* Font face */
+      font-weight: bold; /* Font weight */
+      text-anchor: middle; /* Aligns the text horizontally */
+  }
+  
+  circle {
+    stroke: #fff;
+    /* fill: rgb(228, 226, 215); */
+    stroke: black;
+    stroke-width: 1.5px;
+  }
+  
+  #edge-info {
+    fill: black; /* Font color */
+    font-size: 20px; /* Font size */
+    font-family: 'Arial', sans-serif; /* Font face */
+    font-weight: bold; /* Font weight */
+    text-anchor: middle; /* Aligns the text horizontally */
+  }
+  
+  text {
+    fill: #000;
+    font: 10px sans-serif;
+    pointer-events: none;
+  }
+  
+  .arrow {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 2px;
+  }

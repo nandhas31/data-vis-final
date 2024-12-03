@@ -1,0 +1,60 @@
+/* CricketVisualization.css */
+
+.ground {
+    fill: green;
+    opacity: 0.3;
+}
+
+.boundary {
+    fill: none;
+    stroke: black;
+    stroke-width: 3;
+}
+
+.trajectory {
+    stroke: blue;
+    stroke-width: 2;
+    fill: none;
+    opacity: 0.7;
+}
+
+.six {
+    stroke: red;
+    stroke-width: 2;
+    fill: none;
+    opacity: 0.7;
+}
+
+.trajectory:hover {
+    stroke: orange;
+    stroke-width: 4;
+}
+
+.ball {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* CSS for 3D effect */
+.ball-3d {
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.pitch {
+    fill: brown;
+    opacity: 0.6;
+}
+
+.legend {
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.legend-color-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+}

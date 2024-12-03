@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import * as d3 from 'd3';
 import './App.css';
 import Sankey from './component/sankey'
 import IndiaBatting from './component/india_batting';
+import NetworkGraph from './component/network_graph';
+import BoundaryGraph from './component/boundary_graph';
+import WicketDistribution from './component/wicket_distribution';
+import WicketsinWanderers from './component/wanderers_wickets';
+import PakistanPerformance from './component/pakistan_performance';
+import JoginderPerf from './component/joghinder_perf'
 
 function App() {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Fetch or load your CSV data
+    d3.dsv(",", "graph_summary.csv", d => ({
+      source: d.source,
+      target: d.target,
+      value: d.value,
+    })).then(setData);
+  }, []);
 
 
   return (
@@ -14,6 +32,7 @@ function App() {
 
         <p className='authors'>Authors: Mohamed Aamir, Neel Kothari, Krishnav Singhal, Nandha Sundaravadivel</p>
         <p className='subtitle'>On this page, we'll bring the iconic India vs. Pakistan match to life through dynamic visualizations, uncovering key moments, stats, and insights from this unforgettable game. From the explosive batting of Gautam Gambhir and the fearless bowling of Ishant Sharma, we’ll break down the key moments and stats that made this match a legend. Join us as we explore how India clinched the inaugural T20 World Cup in a game that had the world on the edge of its seat!</p>
+      <br/>
       <div className="background">
         <h3>Background</h3>
         <h4>The Game of Cricket</h4>
@@ -29,6 +48,12 @@ function App() {
       <Sankey/>
       <p>An Indian upset seems unlikely, no?</p>
         <IndiaBatting/>
+        <NetworkGraph className=""/>
+        <BoundaryGraph/>
+        <WicketDistribution/>
+        <WicketsinWanderers/>
+        <PakistanPerformance/>
+        <JoginderPerf/>
       </header>
 
 
