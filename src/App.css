@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -31,7 +30,7 @@
 .tableau-vis {
   width: 80%;
   position: relative;
-  padding-bottom: 10%;
+  padding-top: 5%;
 }
 
 .tableau-container iframe {
@@ -84,7 +83,6 @@ body {
 }
 
 .App-header p {
-  font-size: 1rem;
   margin-bottom: 10px;
 }
 
@@ -102,6 +100,35 @@ body {
   color: "white";
   padding-left: 5%;
   padding-right: 5%;
+  font-size: 18px;
+}
+
+.tutorial {
+  color: #D3D3D3;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 14px;
+  font-style: italic;
+
+}
+
+.tutorial-list {
+  color: #D3D3D3;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+  width: 100%;
+}
+
+.dashboard {
+  background-color: #ecf0f1;
+  margin: 5%;
+  height: fit-content;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  width: 98%;
 }
 
 /* Background Section */

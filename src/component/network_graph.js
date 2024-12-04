@@ -1457,6 +1457,8 @@ const GraphVisualization = () => {
     }
   ];
 
+  const playerCountries = { "Mohammad Asif": "Pakistan", "G Gambhir": "India", "RV Uthappa": "India", "Umar Gul": "Pakistan", "V Sehwag": "India", "Yuvraj Singh": "India", "KD Karthik": "India", "MS Dhoni": "India", "Yasir Arafat": "Pakistan", "Sohail Tanvir": "Pakistan", "Shahid Afridi": "Pakistan", "IK Pathan": "India", "Harbhajan Singh": "India", "AB Agarkar": "India", "S Sreesanth": "India", "RP Singh": "India", "Salman Butt": "Pakistan", "Imran Nazir": "Pakistan", "Kamran Akmal": "Pakistan", "Younis Khan": "Pakistan", "Misbah-ul-Haq": "Pakistan", "Shoaib Malik": "Pakistan", "L Vincent": "New Zealand", "BB McCullum": "New Zealand", "PG Fulton": "New Zealand", "LRPL Taylor": "New Zealand", "SB Styris": "New Zealand", "CD McMillan": "New Zealand", "JDP Oram": "New Zealand", "DL Vettori": "New Zealand", "SE Bond": "New Zealand", "MR Gillespie": "New Zealand", "JS Patel": "New Zealand", "JM Anderson": "England", "SCJ Broad": "England", "A Flintoff": "England", "AD Mascarenhas": "England", "CT Tremlett": "England", "PD Collingwood": "England", "DL Maddy": "England", "VS Solanki": "England", "Joginder Sharma": "India", "KP Pietersen": "England", "OA Shah": "England", "LJ Wright": "England", "SM Pollock": "South Africa", "M Ntini": "South Africa", "RG Sharma": "India", "JJ van der Wath": "South Africa", "M Morkel": "South Africa", "VD Philander": "South Africa", "JA Morkel": "South Africa", "HH Gibbs": "South Africa", "GC Smith": "South Africa", "AB de Villiers": "South Africa", "JM Kemp": "South Africa", "MV Boucher": "South Africa", "B Lee": "Australia", "NW Bracken": "Australia", "SR Clark": "Australia", "MG Johnson": "Australia", "A Symonds": "Australia", "MJ Clarke": "Australia", "AC Gilchrist": "Australia", "ML Hayden": "Australia", "BJ Hodge": "Australia", "MEK Hussey": "Australia", "BJ Haddin": "Australia", "YK Pathan": "India", "Mohammad Hafeez": "Pakistan" };
+
   useEffect(() => {
     if (!data) return;
 
@@ -1477,10 +1479,10 @@ const GraphVisualization = () => {
       .attr('height', height);
 
     // Add edge info text
-    const edgeInfoText = svg.append('text')
-      .attr('id', 'edge-info')
-      .attr('transform', `translate(${width * 0.75}, 30)`)
-      .text('');
+    // const edgeInfoText = svg.append('text')
+    //   .attr('id', 'edge-info')
+    //   .attr('transform', `translate(${width * 0.75}, 30)`)
+    //   .text('');
 
     // Create arrow markers
     const defs = svg.append('defs');
@@ -1541,6 +1543,22 @@ const GraphVisualization = () => {
           .attr('marker-end', 'url(#arrowhead)')
           .classed('selected', true);
 
+        // Change the opacity of other nodes to be lesser
+        let desiredIndices = [firstClickIndex.name];
+        path.each(function (linkData) {
+          if (linkData.source.name == firstClickIndex.name) {
+            desiredIndices.push(linkData.target.name);
+          } else if (linkData.target.name == firstClickIndex.name) {
+            desiredIndices.push(linkData.source.name);
+          }
+        });
+        node.selectAll("circle").attr("opacity", d => (desiredIndices.includes(d.name) ? 1 : 0.2));
+
+        //Change the opacity of other edges to be lesser
+        path.filter(function (linkData) {
+          return linkData.source.name != firstClickIndex.name && linkData.target.name != firstClickIndex.name;
+        }).attr("opacity", 0.2);
+
         d3.select(this).select('.label').style('opacity', 1);
       } else {
         const secondClick = d3.select('body').classed('second');
@@ -1558,15 +1576,32 @@ const GraphVisualization = () => {
           secondClickIndex = d;
           d3.select(this).select('.label').style('opacity', 1);
 
-          let infoToDisplay = null;
+          // let infoToDisplay = null;
+          // path.each(function (linkData) {
+          //   if ((linkData.source.name === secondClickIndex.name && linkData.target.name === firstClickIndex.name) ||
+          //     (linkData.target.name === secondClickIndex.name && linkData.source.name === firstClickIndex.name)) {
+          //     infoToDisplay = linkData.info;
+          //   }
+          // });
+
+          let infoToDisplay = "";
           path.each(function (linkData) {
-            if ((linkData.source.name === secondClickIndex.name && linkData.target.name === firstClickIndex.name) ||
-              (linkData.target.name === secondClickIndex.name && linkData.source.name === firstClickIndex.name)) {
-              infoToDisplay = linkData.info;
+            if (linkData.source.name === secondClickIndex.name && linkData.target.name === firstClickIndex.name ||
+              linkData.target.name == secondClickIndex.name && linkData.source.name == firstClickIndex.name) {
+              infoToDisplay += `<p> ${linkData.source.name} (${playerCountries[linkData.source.name]}) to ${linkData.target.name} (${playerCountries[linkData.target.name]}): ${formatEdgeInfo(linkData.info)} </p>`;
             }
           });
 
-          edgeInfoText.text(infoToDisplay);
+          // Unselect all edges except the one we desire
+          path.classed("selected", false).attr("marker-end", null);
+          path.filter(function (linkData) {
+            return linkData.source.name == firstClickIndex.name && linkData.target.name == secondClickIndex.name ||
+              linkData.source.name == secondClickIndex.name && linkData.target.name == firstClickIndex.name;
+          }).attr("marker-end", "url(#arrowhead)")
+            .classed("selected", true);
+
+          // edgeInfoText.text(infoToDisplay);
+          d3.select("#edge-info").html(infoToDisplay);
           d3.select('body').classed('second', true);
         } else {
           path.attr('marker-end', null);
@@ -1574,7 +1609,10 @@ const GraphVisualization = () => {
           d3.select('body').classed('second', false);
           path.classed('selected', false);
           d3.selectAll('.label').style('opacity', 0);
-          edgeInfoText.text('');
+          node.selectAll("circle").attr("opacity", 1);
+          path.attr("opacity", 1);
+          // edgeInfoText.text('');
+          d3.select("#edge-info").html("");
           firstClickIndex = -1;
           secondClickIndex = -1;
         }
@@ -1584,10 +1622,42 @@ const GraphVisualization = () => {
         d3.select(this).select('.label').style('opacity', 1);
       })
       .on('mouseout', function (event, d) {
+        d3.select(this).select("circle").attr("fill", (indianPlayers.includes(d.name) ? "rgb(21, 115, 158)" : "rgb(228, 226, 215)"));
         if (d !== firstClickIndex && d !== secondClickIndex) {
           d3.select(this).select('.label').style('opacity', 0);
         }
       });
+
+    let dropdown = d3.select("#dropdown");
+    let listOfPlayers = [];
+    node.each(d => listOfPlayers.push(d.name));
+    listOfPlayers.sort((a, b) => `${playerCountries[a]}${a}`.localeCompare(`${playerCountries[b]}${b}`));
+    listOfPlayers.forEach(function (d) {
+      dropdown.append("option")
+        .attr("value", d)
+        .text(`${d} - ${playerCountries[d]}`);
+    });
+
+    dropdown.on("change", function () {
+      var selectedPlayer = this.value;
+
+      console.log(firstClickIndex);
+
+      // Basically clear all
+      if (selectedPlayer == "") {
+        node.selectAll("circle").attr("fill", d => (indianPlayers.includes(d.name) ? "rgb(21, 115, 158)" : "rgb(228, 226, 215)"));
+        node.filter(d => d.index != firstClickIndex.index && d.index != secondClickIndex.index).selectAll(".label").style("opacity", 0);
+      }
+
+      // Color selected node orange
+      node.selectAll("circle").attr("fill", d => (indianPlayers.includes(d.name) ? "rgb(21, 115, 158)" : "rgb(228, 226, 215)"));
+      node.filter(d => d.name == selectedPlayer).selectAll("circle").attr("fill", "orange");
+
+      // Displaying the label
+      node.filter(d => d.index != firstClickIndex.index && d.index != secondClickIndex.index).selectAll(".label").style("opacity", 0);
+      node.filter(d => d.name == selectedPlayer).selectAll(".label").style("opacity", 1);
+    });
+
 
     function tick() {
       path.attr('d', (d) => {
@@ -1629,6 +1699,41 @@ const GraphVisualization = () => {
         d.fy = null;
       }
     }
+    document.addEventListener("click", function(event) {
+      if (event.target.tagName.toLowerCase() !== "circle") {
+      path.attr('marker-end', null);
+          d3.select('body').classed('first', false);
+          d3.select('body').classed('second', false);
+          path.classed('selected', false);
+          d3.selectAll('.label').style('opacity', 0);
+          node.selectAll("circle").attr("opacity", 1);
+          path.attr("opacity", 1);
+          // edgeInfoText.text('');
+          d3.select("#edge-info").html("");
+          firstClickIndex = -1;
+          secondClickIndex = -1;
+      }
+    });
+
+    function formatEdgeInfo(info) {
+      info = JSON.parse(info.replaceAll("'", "\""));
+
+      let curr = info[0];
+      let count = 0;
+      let result = `<br> [(Score type) - Number of score type]`;
+      result += `<br> (${curr}) - `;
+      for (let i = 0; i < info.length; i++) {
+        if (curr !== info[i]) {
+          result += `${count} <br> (${info[i]}) - `;
+          count = 1;
+          curr = info[i];
+        } else {
+          count++;
+        }
+      }
+      result += count;
+      return result;
+    }
 
     return () => {
       // Cleanup if necessary (remove SVG, event listeners, etc.)
@@ -1636,7 +1741,15 @@ const GraphVisualization = () => {
     };
   }, [data]);
 
-  return <svg ref={svgRef}></svg>;
+  return (<div>
+    <div id="dropdown-container">
+      <select id="dropdown">
+        <option value="">Select Player</option>
+      </select>
+    </div>
+    <div id="edge-info"></div>
+    <svg ref={svgRef}></svg>
+  </div>);
 };
 
 export default GraphVisualization;
