@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import './App.css';
-import Sankey from './component/sankey'
 import IndiaBatting from './component/india_batting';
 import NetworkGraph from './component/network_graph';
 import BoundaryGraph from './component/boundary_graph';
@@ -49,6 +48,8 @@ function App() {
           <h4>The Game of Cricket</h4>
           <p>Cricket is a bat-and-ball sport played between two teams of 11 players each. The game is divided into innings, with one team batting and the other fielding. The batting team aims to score runs by hitting the ball and running between wickets, while the fielding team tries to dismiss the batsmen by getting them out in various ways. The match is typically played over a set number of overs (each with a set number of balls), and the team with the most runs at the end wins.  A player getting out is reffered to as losing a wicket.</p>
           <p>The batting team plays until they are out of overs or all of the batting players are out (all wickets are lost). Once finished, the fielding team will have a chance at batting to try to beat the other team's score. This is often called "chasing"</p>
+          <p>
+            In cricket, points (runs) are scored by hitting the ball to the boundary (4 runs if the ball touches the ground before crossing the boundary, or 6 runs if it clears the boundary without touching the ground) or by running between the wickets (1, 2, 3, etc.).</p>
           <p>A wicket can fall in many ways. The most common occur when the bowled ball makes contact with the wicket stumps, the ball is caught after it is hit by the batting player, or if the batting player blocks the wicket stumps with their legs (called an LBW). Refer to the Wikipedia page for an exhaustive list.</p>
           <p>In the context of the T20 format (which was used in the 2007 World Cup), each team gets 20 overs to bat (with 6 balls per over), making for a fast-paced, action-packed game.</p>
           <p>For more in-depth information, feel free to explore the <a href="https://en.wikipedia.org/wiki/Cricket" target="_blank" rel="noopener noreferrer">Cricket Wikipedia page</a>.</p>
@@ -109,17 +110,14 @@ function App() {
           <li><strong>Run out (yellow):</strong> When the batter fails to complete a run before the stumps are broken.</li>
           <li><strong>Stumped (purple):</strong> When the wicketkeeper removes the stumps while the batter is out of their crease.</li>
         </ul>
-        <p className='tutorial'>Key insights:</p>
+        <p className='tutorial'><b>Key insights:</b></p>
         <ul className='tutorial-list'>
-          <li><strong>Bowled (blue):</strong> When the ball hits the stumps directly.</li>
-          <li><strong>Caught (orange):</strong> When a fielder catches the ball before it hits the ground.</li>
-          <li><strong>Caught and bowled (red):</strong> When the bowler catches the ball from the batter's shot.</li>
-          <li><strong>Hit wicket (teal):</strong> When the batter accidentally hits their stumps while playing a shot.</li>
-          <li><strong>LBW (green):</strong> Leg Before Wicket, when the batter is out because the ball hits their leg in front of the stumps.</li>
-          <li><strong>Run out (yellow):</strong> When the batter fails to complete a run before the stumps are broken.</li>
-          <li><strong>Stumped (purple):</strong> When the wicketkeeper removes the stumps while the batter is out of their crease.</li>
+          <li><b>Caught</b> is the most common dismissal type across all three stadiums.</li>
+          <li><b>Bowled</b> also occurs frequently, contributing significantly to the total wickets.</li>
+          <li>Other dismissal types like run out and <b>LBW</b> have a smaller but consistent presence.</li>
+          <li>The trends are fairly similar across all three venues, showing no major variations in how wickets were taken.</li>
         </ul>
-        <br/>
+        <br />
 
 
 
@@ -146,12 +144,19 @@ function App() {
         <h1>The End!</h1>
         <p className='subtitle'>Oh you're still here? Interested in analyzing the tournament in its entirety? We have just the thing for you.</p>
         <NetworkGraph />
+        <p className='tutorial'>The drop down menu lists all of the Indian team players and players from teams that faced India in the tournament. The nodes in the graph represent the players and an edge between two nodes shows that those two players have faced off at some point in the tournament. The directed edges of the network graph go from bowler to batter. All Indian players are shown in blue.</p>
+
+        <p className='tutorial'>The node corresponding to the player selected in the dropdown is highlighted in orange. Clicking on a player highlights all players that the clicked player has faced off. Clicking on any one of the connected nodes gives a summary of all the balls in their face-off.</p>
+
+        <p className='tutorial'>To view the summary of a new player pair, click on a random node to clear settings (may have to do multiple times). To remove the orange from a node, move your mouse over it.</p>
+
 
 
         <div className='dashboard'>
           <DashEmbed />
         </div>
-        <br/>
+        <p>Filter and hover to explore batting performance of the teams over all 20 overs yourself!</p>
+        <br />
       </header>
 
 
