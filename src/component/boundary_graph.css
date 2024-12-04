@@ -58,3 +58,9 @@
     display: inline-block;
     margin-right: 5px;
 }
+
+.text {
+    fill: white;
+    color: white;
+    font-size: 18px;
+}

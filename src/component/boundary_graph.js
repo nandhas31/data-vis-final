@@ -153,7 +153,7 @@ const BoundaryGraph = () => {
       .attr("x", 30)
       .attr("y", 15)
       .text("Fours")
-      .attr("font-size", "14px");
+      .attr("class", "text")
 
     legend.append("rect")
       .attr("x", 0)
@@ -167,7 +167,7 @@ const BoundaryGraph = () => {
       .attr("x", 30)
       .attr("y", 45)
       .text("Sixes")
-      .attr("font-size", "14px");
+      .attr("class", "text")  
 
   }, []);
 
