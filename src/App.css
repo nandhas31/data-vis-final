@@ -30,9 +30,8 @@
 
 .tableau-vis {
   width: 80%;
-  height: 0;
-  padding-bottom: 50%;  /* Aspect ratio of 4:3 (adjust as needed) */
   position: relative;
+  padding-bottom: 10%;
 }
 
 .tableau-container iframe {

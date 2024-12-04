@@ -23,10 +23,16 @@ const IndiaBatting = () => {
   }, []);
 
   return (
-    <div className="tableau-container">
+    <div className="tableau-vis">
       <div
         className="tableauPlaceholder"
         id="viz1733026102379"
+        style={{
+          position: "relative",
+          width: '100%',
+          height: 'auto',
+          maxWidth: '100%',
+      }}
       >
         <noscript>
           <a href="#">
