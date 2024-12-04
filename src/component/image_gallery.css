@@ -1,0 +1,17 @@
+.image-gallery {
+  display: flex;
+  justify-content: center; /* Centers the images horizontally */
+  align-items: center; /* Centers the images vertically (if they have a height) */
+  width: 100%;  /* Takes up the full width of the parent */
+  overflow-x: auto; /* Allows horizontal scrolling if images overflow */
+  gap: 10px; /* Adds space between images */
+}
+
+.gallery-image {
+  flex-shrink: 1; /* Ensures images can shrink if needed */
+  max-width: 30%;  /* Ensures the images are responsive */
+  width: auto;
+  height: 150px;  /* Keeps the aspect ratio intact */
+  object-fit: contain;  /* Ensures images fit inside their container without distortion */
+  display: block;  /* Removes any unwanted space under images */
+}
