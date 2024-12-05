@@ -1,14 +1,16 @@
 
 path.link {
     fill: none;
-    stroke: #afa8a8;
+    stroke: #807c7c;
     stroke-width: 1.5px;
+    opacity: .7;
   }
   
   path.selected {
     fill: none;
     stroke: #ac1a1a;
     stroke-width: 2px;
+    opacity: 1;
   }
   
   .label {
