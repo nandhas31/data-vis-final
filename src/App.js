@@ -40,11 +40,11 @@ function App() {
         <h2>India vs. Pakistan in the 2007 ICC T20 World Cup</h2>
 
         <p className='authors'>Authors: Mohamed Aamir, Neel Kothari, Krishnav Singhal, Nandha Sundaravadivel</p>
-        <p className='subtitle'>On this page, we'll bring the iconic India vs. Pakistan match to life through dynamic visualizations, uncovering key moments, stats, and insights from this unforgettable game. From the explosive batting of Gautam Gambhir and the fearless bowling of Ishant Sharma, we’ll break down the key moments and stats that made this match a legend. Join us as we explore how India clinched the inaugural T20 World Cup in a game that had the world on the edge of its seat!</p>
+        <p className='subtitle'>On this page, we'll bring the iconic India vs. Pakistan match to life through dynamic visualizations, uncovering key moments, stats, and insights from this unforgettable game. From the explosive batting of Gautam Gambhir and the fearless bowling of RP Singh, we’ll break down the key moments and stats that made this match a legend. Join us as we explore how India clinched the inaugural T20 World Cup in a game that had the world on the edge of its seat!</p>
         <div style={{ width: '100%', margin: '0 auto' }}><ImageGallery images={images} /></div>
         <br />
         <div className="background">
-          <h3>Background</h3>
+          <h4>Background</h4>
           <h4>The Game of Cricket</h4>
           <p>Cricket is a bat-and-ball sport played between two teams of 11 players each. The game is divided into innings, with one team batting and the other fielding. The batting team aims to score runs by hitting the ball and running between wickets, while the fielding team tries to dismiss the batsmen by getting them out in various ways. The match is typically played over a set number of overs (each with a set number of balls), and the team with the most runs at the end wins.  A player getting out is reffered to as losing a wicket.</p>
           <p>The batting team plays until they are out of overs or all of the batting players are out (all wickets are lost). Once finished, the fielding team will have a chance at batting to try to beat the other team's score. This is often called "chasing"</p>
@@ -61,7 +61,7 @@ function App() {
         <h4>Well then, It’s time to take guard!</h4><br />
         <p className='subtitle'>The inaugural ICC T20 World Cup was a step into uncharted territory for international cricket. Teams approached this format with different strategies, some with experienced veterans and others with youthful energy. Among them was the Indian cricket team, led by a young captain, MS Dhoni. The squad was filled with relatively unknown players, many of whom had little experience on the global stage.</p>
         <p className='subtitle'>Critics doubted their chances. How could a team with so few matches under their belt challenge seasoned sides? Yet, with every game, India defied expectations. They showcased fearless cricket, pulling off sensational wins and capturing the imagination of fans. Their road to the final wasn’t easy, but they had earned their place, setting up a dream clash against arch-rivals Pakistan.</p>
-        <h3>The Final Showdown Begins</h3>
+        <h4>The Final Showdown Begins</h4>
         <p className='subtitle'>The Wanderers Stadium buzzed with excitement as India won the toss and chose to bat. The opening overs reflected cautious optimism. Runs came in singles and doubles, interspersed with occasional boundaries. But as momentum began to build, disaster struck. A quick succession of wickets silenced the crowd, leaving fans anxious.
         </p>
         <IndiaBatting style={{ height: '800px' }} />
@@ -94,7 +94,7 @@ function App() {
         <p className='tutorial'>Each line shows the trajectory of the ball from the pitch (center) to the boundary, giving an idea of Gambhir's shot placement. The distribution of these trajectories demonstrates how Gambhir scored boundaries across different areas of the field, indicating his ability to play diverse and effective shots in multiple directions.</p>
         <p className='tutorial'></p>
 
-        <h3>The Chase: Pakistan’s Battle for Glory</h3>
+        <h4>The Chase: Pakistan’s Battle for Glory</h4>
         <p className='subtitle'>Pakistan began their chase with confidence, their openers crafting steady partnerships. The Wanderers pitch offered some movement, but the batters adapted, chipping away at the target. Early breakthroughs from RP Singh and Irfan Pathan, however, threw Pakistan’s plans into disarray.
         </p>
         <WicketsinWanderers style={{ height: '400px' }} />
@@ -129,13 +129,13 @@ function App() {
         <p className='tutorial'>The above graph summarizes how the Pakistan team performaned in their batting phase. The first column represents the batters, the second represents the bowler that bowled the balls to the batter, the third shows the result of the ball, and the last column shows the total number of points scored from each bowled ball.</p>
         <p className='tutorial'>&#9432; <b>Extras scored</b> refers to a special type of point scored for the batting team which result from errors of the fielding team. Common methods of error include "No-balls" (when the bowler performs an illegal action such as overstepping a boundary or the ball bouncing more than once.), "Wide ball" (the ball is too far from the batter), "Leg byes" (the ball hits the batter's body), or "Byes" (the wicketkeeper, the fielding player behind the batter, fails to catch balls that are not hit by the batter).</p>
 
-        <h3>A Twist of Fate</h3>
+        <h4>A Twist of Fate</h4>
         <p className='subtitle'>The turning point came late in the game. Wickets tumbled as India’s bowlers delivered under pressure. Harbhajan Singh spun webs around the batters, and Sreesanth’s pace added to Pakistan’s woes. Yet, Pakistan’s hopes rested on one man—Misbah-ul-Haq. Calm under pressure, Misbah had carried his team single-handedly to the brink of victory.</p>
         <p className='subtitle'>With 13 runs needed in the final over, Dhoni faced a crucial decision. The obvious choice would have been Harbhajan Singh, India’s most experienced bowler. Instead, Dhoni handed the ball to Joginder Sharma. The move shocked the commentators and crowd alike. What could Joginder, with limited experience, possibly bring to this high-pressure situation?</p>
 
         <JoginderPerf />
         <p className='tutorial'>The above graph shows the performance of Indian bowlers Harbhajan (Blue) and Joginder (Orange) in all matches leading up to the final. We can observe that the Average Strike Rate of batters against Harbhajan is higher than that against Joginder. Furthermore, Joginder generally has a better Average Economy Rate and Dot Ball Percentage as shown by the increased presence of Orange circles to the right of the median divider and Blue circles to the left of the divider. While Joginder is likely to bowl dot balls, Joginder is still a risky choice, since he generally conceded more sixes! This makes Dhoni’s decision of picking Joginder a risky but bold choice!</p>
-        <h3>The Final Over</h3>
+        <h4>The Final Over</h4>
         <p className='subtitle'>The first ball was a wide, sending shockwaves through the Indian fans. The second was a dot, bringing momentary relief. On the third delivery, Misbah stepped forward and launched the ball over long-on for six. The stadium erupted. Pakistan now needed just seven runs off four balls.
         </p>
         <p className='subtitle'>The next ball was slower, deceptive. Misbah misjudged it and played defensively. Three balls remained. Then came the moment etched in cricketing history. Misbah attempted an audacious scoop shot over fine leg—a high-risk, high-reward gamble. Time seemed to slow as the ball sailed into the air, a hush falling over the crowd.</p>
@@ -155,7 +155,7 @@ function App() {
         <div className='dashboard'>
           <DashEmbed />
         </div>
-        <p>Filter and hover to explore batting performance of the teams over all 20 overs yourself!</p>
+        <p className='tutorial'>Filter and hover to explore batting performance of the teams over all 20 overs yourself!</p>
         <br />
       </header>
 

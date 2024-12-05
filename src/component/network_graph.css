@@ -1,3 +1,4 @@
+
 path.link {
     fill: none;
     stroke: #afa8a8;
@@ -34,8 +35,8 @@ path.link {
   }
   
   text {
-    fill: #000;
-    font: 10px sans-serif;
+    fill: white;
+    font: 14px sans-serif;
     pointer-events: none;
   }
   
@@ -43,4 +44,8 @@ path.link {
       fill: none;
       stroke: #ccc;
       stroke-width: 2px;
+  }
+
+  h4 {
+    color:cadetblue;
   }

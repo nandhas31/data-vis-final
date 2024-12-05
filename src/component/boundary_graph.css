@@ -1,8 +1,8 @@
 /* CricketVisualization.css */
 
 .ground {
-    fill: green;
-    opacity: 0.3;
+    fill: hsl(114, 100%, 50%);
+    opacity: 0.4;
 }
 
 .boundary {

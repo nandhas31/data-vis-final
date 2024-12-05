@@ -41,17 +41,17 @@ const BoundaryGraph = () => {
     const ballTrajectories = [
       { angle: 110, height: 50 },
       { angle: 30, height: 60 },
-      { angle: 20, height: 55 },
+      { angle: 16, height: 55 },
       { angle: 220, height: 70 },
       { angle: 210, height: 50 },
-      { angle: 310, height: 80 },
+      { angle: 325, height: 80 },
       { angle: 330, height: 40 },
       { angle: 340, height: 65 },
     ];
 
     const sixes = [
-      { angle: 195, height: 40 },
-      { angle: 230, height: 65 },
+      { angle: 205, height: 40 },
+      { angle: 203, height: 65 },
     ];
 
     // Draw ball trajectories with animation
@@ -97,7 +97,7 @@ const BoundaryGraph = () => {
       let x2 = 0;
       let y2 = 0;
 
-      if (trajectory.angle === 195) {
+      if (trajectory.angle === 203) {
         x2 = centerX + radius * Math.cos((trajectory.angle * Math.PI) / 180) * 1.3;
         y2 = centerY - radius * Math.sin((trajectory.angle * Math.PI) / 180) * 1.3;
       } else {

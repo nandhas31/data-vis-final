@@ -1504,7 +1504,7 @@ const GraphVisualization = () => {
       .enter()
       .append('path')
       .attr('class', (d) => `link ${d.type}`)
-      .attr('marker-end', 'url(#arrowhead)');
+      // .attr('marker-end', 'url(#arrowhead)');
 
     // Add the nodes (circles with labels)
     const node = svg.selectAll('.node')
@@ -1658,6 +1658,53 @@ const GraphVisualization = () => {
       node.filter(d => d.name == selectedPlayer).selectAll(".label").style("opacity", 1);
     });
 
+    // Add a legend
+    const legend = svg.append("g")
+      .attr("class", "legend")
+      .attr("transform", "translate(100, 70)");
+
+    // Add legend items for 'four' and 'six'
+    legend.append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", "rgb(21, 115, 158)") // Blue
+      .attr("class", "legend-color-box");
+
+    legend.append("text")
+      .attr("x", 30)
+      .attr("y", 15)
+      .text("Indian players")
+      .attr("font-size", "14px");
+
+    legend.append("rect")
+      .attr("x", 0)
+      .attr("y", 30)
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", "rgb(228, 226, 215)") // Grey
+      .attr("class", "legend-color-box");
+
+    legend.append("text")
+      .attr("x", 30)
+      .attr("y", 45)
+      .text("Players from other teams")
+      .attr("font-size", "14px");
+
+    legend.append("rect")
+      .attr("x", 0)
+      .attr("y", 60)
+      .attr("width", 20)
+      .attr("height", 20)
+      .attr("fill", "orange") // orange
+      .attr("class", "legend-color-box");
+
+    legend.append("text")
+      .attr("x", 30)
+      .attr("y", 75)
+      .text("Player selected from dropdown")
+      .attr("font-size", "14px");
 
     function tick() {
       path.attr('d', (d) => {
@@ -1699,19 +1746,20 @@ const GraphVisualization = () => {
         d.fy = null;
       }
     }
-    document.addEventListener("click", function(event) {
+
+    document.addEventListener("click", function (event) {
       if (event.target.tagName.toLowerCase() !== "circle") {
-      path.attr('marker-end', null);
-          d3.select('body').classed('first', false);
-          d3.select('body').classed('second', false);
-          path.classed('selected', false);
-          d3.selectAll('.label').style('opacity', 0);
-          node.selectAll("circle").attr("opacity", 1);
-          path.attr("opacity", 1);
-          // edgeInfoText.text('');
-          d3.select("#edge-info").html("");
-          firstClickIndex = -1;
-          secondClickIndex = -1;
+        path.attr('marker-end', null);
+        d3.select('body').classed('first', false);
+        d3.select('body').classed('second', false);
+        path.classed('selected', false);
+        d3.selectAll('.label').style('opacity', 0);
+        node.selectAll("circle").attr("opacity", 1);
+        path.attr("opacity", 1);
+        // edgeInfoText.text('');
+        d3.select("#edge-info").html("");
+        firstClickIndex = -1;
+        secondClickIndex = -1;
       }
     });
 
